@@ -1,0 +1,7 @@
+Router
+TP-LINK
+Broadcom
+Broadband
+3Com
+Huawei
+ZyXel
