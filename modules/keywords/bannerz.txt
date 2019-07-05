@@ -24,3 +24,6 @@ bftpd
 Huawei
 huawei
 HUAWEI
+SSH-2.0-HUAWEI-1.5
+SSH-1.5-HUAWEI-VRP3.1
+SSH-1.99-HUAWEI-1.5
