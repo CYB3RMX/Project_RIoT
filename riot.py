@@ -35,7 +35,6 @@ class start_RIoT():
       print("cvescan: Scan target's vulnerabilites with CVE database. |You should use >get_banners< first.|")
       print("random_scan: Scan random targets around the world.")
       print("clear: Clears the screen.")
-      print("target: See what target are you selected.")
       print("check_proxy: Scan target's proxy ports.")
       print("router: Scan target with router detection script")
       print("camera: Scan target with camera detection script")
@@ -50,11 +49,11 @@ class start_RIoT():
       print("{}=========={}LOCATION_INFO{}=========={}".format(lc1,lg1,lc1,w1))
       os.system(loc)
    def portscanner():
-    os.system("cd modules/tools/; ./target_recon.sh")
+      os.system("cd modules/tools/; ./target_recon.sh")
    def cvescann():
-    os.system("cd modules/tools/; ./bannerfilter.sh")
-    os.system("cd modules/tools/; ./cvelister.sh")
-    start_RIoT.console()
+      os.system("cd modules/tools/; ./bannerfilter.sh")
+      os.system("cd modules/tools/; ./cvelister.sh")
+      start_RIoT.console()
    def console():
       try:
          con=str(input("[RIoT]> "))
@@ -72,9 +71,6 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'random_scan':
            start_RIoT.scan_random()
-           start_RIoT.console()
-         elif con == 'target':
-           print("\n{}[{}+{}]{} Target: {}".format(lc1,lr1,lc1,w1,targett))
            start_RIoT.console()
          elif con == 'clear':
            os.system("clear")
