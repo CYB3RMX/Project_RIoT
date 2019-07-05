@@ -34,3 +34,5 @@ Siemens
 SIEMENS
 siemens
 FileZilla
+Idea
+Pure-FTPd
