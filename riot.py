@@ -32,7 +32,6 @@ class start_RIoT():
       print("------------COMMANDS_LIST-------------")
       print("get_location: Get target's location informations.")
       print("port_lookup: Port scan against the target.")
-      print("cvescan: Scan target's vulnerabilites with CVE database. |You should use >get_banners< first.|")
       print("random_scan: Scan random targets around the world.")
       print("clear: Clears the screen.")
       print("check_proxy: Scan target's proxy ports.")
@@ -40,7 +39,7 @@ class start_RIoT():
       print("camera: Scan target with camera detection script")
       print("printer: Scan target with printer detection script")
       print("air_sys: Scan target with air system detection script")
-      print("get_banners: Get target's service names.")
+      print("get_cve: Get available CVE for target's service names.")
       print("exit: Exit the program")
       print("help: Print this output :).")
       print("--------------------------------------")
@@ -91,7 +90,7 @@ class start_RIoT():
            print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
            os.system("cd modules/tools/; rm -rf *.txt")
            sys.exit(0)
-         elif con == 'get_banners':
+         elif con == 'get_cve':
            os.system("cd modules/tools/; ./pxbanner.sh")
            start_RIoT.console()
          else:

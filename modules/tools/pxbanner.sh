@@ -18,27 +18,43 @@ do
      if [ $px -eq 21 ];then
        echo -en "Banner info for port 21: "
        python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 22 ];then
        echo -en "Banner info for port 22: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 23 ];then
        echo -en "Banner info for port 23: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 25 ];then
        echo -en "Banner info for port 23: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 137 ];then
        echo -en "Banner info for port 137: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 445 ];then
        echo -en "Banner info for port 445: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 2002 ];then
        echo -en "Banner info for port 2002: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      elif [ $px -eq 2121 ];then
        echo -en "Banner info for port 2121: "
-       python3 bannergrabber.py $target $px >> banners.txt
+       python3 bannergrabber.py $target $px
+       ./bannerfilter.sh
+       ./cvelister.sh
      fi
    fi
 done

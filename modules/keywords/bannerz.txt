@@ -20,3 +20,4 @@ SSH-2.0-OpenSSH_7.6p1
 freebsd
 FreeBSD
 ProFTPD
+bftpd
