@@ -1,5 +1,6 @@
 TP-LINK
 tp-link
+Tplink
 tplink
 TpLink
 TP-Link
@@ -17,3 +18,4 @@ SSH-2.0-OpenSSH_6.7p1
 SSH-2.0-OpenSSH_7.6p1
 freebsd
 FreeBSD
+ProFTPD

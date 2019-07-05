@@ -53,7 +53,7 @@ class start_RIoT():
     os.system("cd modules/tools/; ./target_recon.sh")
    def cvescann():
     os.system("cd modules/tools/; ./bannerfilter.sh")
-    os.system("cd modules/tools/; ./cvelisting.sh")
+    os.system("cd modules/tools/; ./cvelister.sh")
     start_RIoT.console()
    def console():
       try:
