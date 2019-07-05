@@ -21,3 +21,6 @@ freebsd
 FreeBSD
 ProFTPD
 bftpd
+Huawei
+huawei
+HUAWEI
