@@ -18,6 +18,7 @@ SSH-2.0-OpenSSH_6.6.1p1
 SSH-2.0-OpenSSH_6.7p1
 SSH-2.0-OpenSSH_7.6p1
 SSH-2.0-OpenSSH_5.1
+SSH-1.99-OpenSSH_5.4p1
 freebsd
 FreeBSD
 ProFTPD
@@ -54,3 +55,4 @@ rlx-linux
 Docsis-Gateway
 WKH0001.2_PI662
 SSH-2.0-dropbear_0.53
+Cisco IronPort FTP server

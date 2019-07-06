@@ -24,21 +24,74 @@ do
      echo $http >> httpport.txt
    fi
 done
-echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
-./proxy2.sh
+echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
+read choose
+case $choose in
+y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
+   ./proxy2.sh
+   httparr=(`cat httpport.txt`)
+   routerwords=(`cd ..; cd keywords; cat routerwords.txt`)
+   for htt in ${httparr[*]}
+   do
+     rout=`curl -sSL http://$target_ip:$htt`
+     for rw in ${routerwords[*]}
+     do
+        echo $rout | grep "$rw" &>/dev/null
+        if [ $? -eq 0 ];then
+          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+        fi
+     done
+   done
 
-httparr=(`cat httpport.txt`)
-routerwords=(`cd ..; cd keywords; cat routerwords.txt`)
-for htt in ${httparr[*]}
-do
-  rout=`curl -sSL http://$target_ip:$htt`
-  for rw in ${routerwords[*]}
-  do
-     echo $rout | grep "$rw" &>/dev/null
-     if [ $? -eq 0 ];then
-       echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
-     fi
-  done
-done
+   rm -rf httpport.txt ;;
+Y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
+   ./proxy2.sh
+   httparr=(`cat httpport.txt`)
+   routerwords=(`cd ..; cd keywords; cat routerwords.txt`)
+   for htt in ${httparr[*]}
+   do
+     rout=`curl -sSL http://$target_ip:$htt`
+     for rw in ${routerwords[*]}
+     do
+        echo $rout | grep "$rw" &>/dev/null
+        if [ $? -eq 0 ];then
+          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+        fi
+     done
+   done
 
-rm -rf httpport.txt
+   rm -rf httpport.txt ;;
+n) echo -en "$red=>$default Proxy scanning deactivated...\n"
+   httparr=(`cat httpport.txt`)
+   routerwords=(`cd ..; cd keywords; cat routerwords.txt`)
+   for htt in ${httparr[*]}
+   do
+     rout=`curl -sSL http://$target_ip:$htt`
+     for rw in ${routerwords[*]}
+     do
+        echo $rout | grep "$rw" &>/dev/null
+        if [ $? -eq 0 ];then
+          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+        fi
+     done
+   done
+
+   rm -rf httpport.txt ;;
+N) echo -en "$red=>$default Proxy scanning deactivated...\n"
+   httparr=(`cat httpport.txt`)
+   routerwords=(`cd ..; cd keywords; cat routerwords.txt`)
+   for htt in ${httparr[*]}
+   do
+     rout=`curl -sSL http://$target_ip:$htt`
+     for rw in ${routerwords[*]}
+     do
+        echo $rout | grep "$rw" &>/dev/null
+        if [ $? -eq 0 ];then
+          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+        fi
+     done
+   done
+
+   rm -rf httpport.txt ;;
+*) echo -en "$red=>$default Wrong answer :(" ;;
+esac

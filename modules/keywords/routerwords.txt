@@ -5,3 +5,4 @@ Broadband
 3Com
 Huawei
 ZyXel
+EWR-301
