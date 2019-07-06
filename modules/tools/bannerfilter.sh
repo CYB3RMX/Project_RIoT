@@ -9,7 +9,7 @@ if [ -e banners.txt ];then
   do
      cat banners.txt | grep -o $bann &>/dev/null
      if [ $? -eq 0 ];then
-       echo $bann >> targetbanner.txt
+       echo $bann > targetbanner.txt
      fi
   done
 else
