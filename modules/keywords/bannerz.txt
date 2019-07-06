@@ -49,3 +49,7 @@ SSH-2.0-OpenSSH_6.6.1
 SSH-2.0-OpenSSH_5.2
 Ubuntu-4ubuntu0.3
 Ubuntu-4ubuntu2.4
+SSH-2.0-ROSSSH
+rlx-linux
+Docsis-Gateway
+WKH0001.2_PI662
