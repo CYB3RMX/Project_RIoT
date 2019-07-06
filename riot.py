@@ -18,21 +18,11 @@ defbl='\u001b[49m'
 import os,sys
 
 class start_RIoT():
-   def scan_random():
-      print("{}[{}+{}]{} Initializing random scanner module...".format(lc1,lr1,lc1,w1))
-      while True:
-         try:
-            randip=str(os.system("cd modules/tools/; ./ipgenerator.sh --random"))
-            print("\n{}[{}+{}]{} Initializing target scanner module...".format(lc1,lr1,lc1,w1,randip))
-            os.system("cd modules/tools/; ./target_recon.sh")
-         except KeyboardInterrupt or EOFError:
-            print("[!] Program stopped...")
    def helpp():
       print("Usage: python3 riot.py \n")
       print("------------COMMANDS_LIST-------------")
       print("get_location: Get target's location informations.")
       print("port_lookup: Port scan against the target.")
-      print("random_scan: Scan random targets around the world.")
       print("clear: Clears the screen.")
       print("check_proxy: Scan target's proxy ports.")
       print("router: Scan target with router detection script")
@@ -67,9 +57,6 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'cvescan':
            start_RIoT.cvescann()
-           start_RIoT.console()
-         elif con == 'random_scan':
-           start_RIoT.scan_random()
            start_RIoT.console()
          elif con == 'clear':
            os.system("clear")

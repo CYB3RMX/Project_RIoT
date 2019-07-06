@@ -53,3 +53,4 @@ SSH-2.0-ROSSSH
 rlx-linux
 Docsis-Gateway
 WKH0001.2_PI662
+SSH-2.0-dropbear_0.53
