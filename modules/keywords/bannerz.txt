@@ -37,3 +37,15 @@ siemens
 FileZilla
 Idea
 Pure-FTPd
+MikroTik
+SSH-2.0-OpenSSH_6.9p1-hpn14v5
+SSH-2.0-OpenSSH_7.4
+Ubuntu-4ubuntu2.8
+Debian-10+deb9u2
+SSH-2.0-OpenSSH_7.5
+Debian-4+deb7u7
+Ubuntu-2ubuntu2.13
+SSH-2.0-OpenSSH_6.6.1
+SSH-2.0-OpenSSH_5.2
+Ubuntu-4ubuntu0.3
+Ubuntu-4ubuntu2.4
