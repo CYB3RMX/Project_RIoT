@@ -73,6 +73,9 @@ class start_RIoT():
          elif con == 'printer':
            os.system("cd modules/tools/; ./printerdetect.sh")
            start_RIoT.console()
+         elif con == 'camera':
+           os.system("cd modules/tools/; ./webcamdetect.sh")
+           start_RIoT.console()
          elif con == 'exit':
            print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
            os.system("cd modules/tools/; rm -rf *.txt")
@@ -86,6 +89,7 @@ class start_RIoT():
       except KeyboardInterrupt or EOFError:
          print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
          os.system("cd modules/tools/; rm -rf *.txt")
+os.system("cd modules/tools/; python3 dependencies.py")
 os.system("cd modules/tools/; ./banners.sh")
 try:
    targett=str(input("\n{}[{}+{}]{} Enter a target: ".format(lc1,lr1,lc1,w1)))

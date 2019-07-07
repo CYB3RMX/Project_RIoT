@@ -9,24 +9,17 @@ yellow='\e[93m'
 default='\e[0m'
 
 targetip=`cat temp.txt`
-echo -en "$yellow=>$default Starting proxy detection script against $cyan$targetip ...\n"
-echo -en "$yellow=>$default This process can take a little while to complete. Get your coffee and wait :)."
-spin[0]="-"
-spin[1]="\\"
-spin[2]="|"
-spin[3]="/"
+echo -en "$yellow=>$default This process can take a little while to complete. Get your coffee and wait :). \n"
 
-echo -en "\n[scanning] ${spin[0]}"
-for ((l_start=8000;l_start<10000;l_start++))
+nmap -Pn -T 4 $targetip -p 8000-9000 >> porttemp.txt
+nmap -Pn -T 4 $targetip -p 9001-10000 >> porttemp.txt
+
+for ((ports=8000;ports<10000;ports++))
 do
-  for i in "${spin[@]}"
-  do
-        echo -ne "\b$i"
-        sleep 0.1
-  done
-  nc -z -w 1 $targetip $l_start &>/dev/null
-  if [ $? -eq 0 ];then
-    echo $l_start > httpport.txt
-    echo -en "\n$cyan>$green|${red}proxy$green|$cyan>$default Found port: $cyan${l_start} \n"
-  fi
+   cat porttemp.txt | grep -o "${ports}/tcp open" &>/dev/null
+   if [ $? -eq 0 ];then
+     echo -en "$cyan>$green|${red}proxy$green|$cyan>$default Found port: $green$ports$default \n"
+     echo $ports >> httpport.txt
+   fi
 done
+rm -rf porttemp.txt

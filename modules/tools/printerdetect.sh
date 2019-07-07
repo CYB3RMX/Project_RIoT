@@ -15,7 +15,7 @@ echo -en "$yellow=>$default Checking http ports...\n"
 nc -z -w 1 $found 80 &>/dev/null
 if [ $? -eq 0 ];then
   echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
-  echo 80 >> httpport.txt
+  echo "80" >> httpport.txt
 fi
 for ((http=81;http<90;http++))
 do
@@ -28,8 +28,9 @@ done
 echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
 read choice
 case $choice in
-Y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
-   ./proxy2.sh
+Y) echo -en "$yellow=>$default Starting proxy detection script \n"
+   ./proxyportcheck.sh
+   httarr=(`cat httpport.txt`)
    for lo in ${httarr[*]}
    do
      ifacelook=`curl -sSL http://$found:$lo`
@@ -46,13 +47,22 @@ Y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$tar
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
      echo $ifacelook | grep -o "Copyright(C) 2000-2009 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "Copyright(C) 2000-2005 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "HP LaserJet" &>/dev/null
      if [ $? -eq 0 ];then
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
    done
    rm -rf httpport.txt ;;
-y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
-   ./proxy2.sh
+y) echo -en "$yellow=>$default Starting proxy detection script \n"
+   ./proxyportcheck.sh
+   httarr=(`cat httpport.txt`)
    for lo in ${httarr[*]}
    do
      ifacelook=`curl -sSL http://$found:$lo`
@@ -69,6 +79,14 @@ y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$tar
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
      echo $ifacelook | grep -o "Copyright(C) 2000-2009 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "Copyright(C) 2000-2005 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "HP LaserJet" &>/dev/null
      if [ $? -eq 0 ];then
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
@@ -95,6 +113,14 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
      if [ $? -eq 0 ];then
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
+     echo $ifacelook | grep -o "Copyright(C) 2000-2005 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "HP LaserJet" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
    done
    rm -rf httpport.txt ;;
 N) echo -en "$red=>$default Proxy scanning deactivated...\n"
@@ -118,7 +144,15 @@ N) echo -en "$red=>$default Proxy scanning deactivated...\n"
      if [ $? -eq 0 ];then
        echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
      fi
+     echo $ifacelook | grep -o "Copyright(C) 2000-2005 Brother Industries" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
+     echo $ifacelook | grep -o "HP LaserJet" &>/dev/null
+     if [ $? -eq 0 ];then
+       echo -en "$cyan>$green|${red}printer$green|$cyan>$default This device is a printer check: http://$found:$lo \n"
+     fi
    done
    rm -rf httpport.txt ;;
-*) echo -en "$red=>$default Wrong answer :(" ;;
+*) echo -en "$red=>$default Wrong answer :( \n" ;;
 esac

@@ -1,6 +1,7 @@
-IP Camera
 Camera
 AXIS
-Network Camera
 MOBOTIX
 Netwave
+ipwebcam
+Cam
+CAM

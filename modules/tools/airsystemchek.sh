@@ -27,8 +27,8 @@ done
 echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
 read sel
 case $sel in
-Y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
-   ./proxy2.sh
+Y) echo -en "$yellow=>$default Starting proxy detection script \n"
+   ./proxyportcheck.sh
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
    for htt in ${httparr[*]}
@@ -43,8 +43,8 @@ Y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$tar
    done
 
    rm -rf httpport.txt ;;
-y) echo -en "$yellow=>$default Starting proxy detection script against $cyan$target_ip \n"
-   ./proxy2.sh
+y) echo -en "$yellow=>$default Starting proxy detection script \n"
+   ./proxyportcheck.sh
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
    for htt in ${httparr[*]}
@@ -89,5 +89,5 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
    done
 
    rm -rf httpport.txt ;;
-*) echo -en "$red=>$default Wrong answer :(" ;;
+*) echo -en "$red=>$default Wrong answer :( \n" ;;
 esac

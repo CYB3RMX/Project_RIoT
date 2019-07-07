@@ -6,3 +6,6 @@ Broadband
 Huawei
 ZyXel
 EWR-301
+ZyXEL
+P-660HN-T1A_IPv6
+Yönlendirici

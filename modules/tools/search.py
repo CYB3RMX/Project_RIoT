@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 
-import os,sys
-
+import os,sys,pycvesearch
+from pycvesearch import *
 try:
-   import pycvesearch
-   from pycvesearch import *
-except ModuleNotFoundError:
-   os.system("git clone https://github.com/cve-search/PyCVESearch")
-   os.system("cd PyCVESearch; chmod 777 setup.py; ./setup.py")
-
-query=str(sys.argv[1])
-cve = CVESearch()
-output=str(cve.search(query))
-print(output)
+   query=str(sys.argv[1])
+   cve = CVESearch()
+   output=str(cve.search(query))
+   print(output)
+except IndexError:
+   print("=> Can't get banner information :(")
