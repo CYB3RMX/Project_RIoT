@@ -56,5 +56,4 @@ rlx-linux
 Docsis-Gateway
 WKH0001.2_PI662
 SSH-2.0-dropbear_0.53
-Cisco IronPort FTP server
 Linux-ftpd-0.17
