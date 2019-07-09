@@ -15,9 +15,17 @@ lm1='\u001b[95m'
 w1='\u001b[0m'
 defbl='\u001b[49m'
 
-import os,sys
-
+import os,sys,readline,rlcompleter
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit"]
 class start_RIoT():
+   def completee(con, state):
+      options=[i for i in commands if i.startswith(con)]
+      if state < len(options):
+        return options[state]
+      else:
+        return None
+   readline.parse_and_bind("tab: complete")
+   readline.set_completer(completee)
    def helpp():
       print("Usage: python3 riot.py \n")
       print("------------COMMANDS_LIST-------------")

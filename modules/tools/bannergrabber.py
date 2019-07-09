@@ -16,6 +16,6 @@ try:
    newfile.write(data)
    newfile.close()
    print(data)
-except ConnectionResetError:
-   print("Target is maybe behind a some security solution...")
+except UnicodeDecodeError:
+   print("Can't get banner information...")
 sock.close()

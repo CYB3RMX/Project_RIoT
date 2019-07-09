@@ -18,28 +18,24 @@ do
      if [ $px -eq 21 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 21: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 22 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 22: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 23 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 25 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 80 ];then
        exec 3<>/dev/tcp/$target/$px
        echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
-       cut -c9-40 targethttp.txt > targetbanner.txt
+       cut -c9-40 targethttp.txt > banners.txt
        alyx=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 80: $alyx \n\n"
        ./cvelister.sh
@@ -47,13 +43,12 @@ do
      elif [ $px -eq 137 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 137: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 443 ];then
        exec 3<>/dev/tcp/$target/$px
        echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
-       cut -c9-40 targethttp.txt > targetbanner.txt
+       cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 443: $alyx0 \n\n"
        ./cvelister.sh
@@ -61,7 +56,6 @@ do
      elif [ $px -eq 445 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 445: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 2002 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2002: "
@@ -71,13 +65,12 @@ do
      elif [ $px -eq 2121 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2121: "
        python3 bannergrabber.py $target $px
-       ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 3128 ];then
        exec 3<>/dev/tcp/$target/$px
        echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
-       cut -c9-40 targethttp.txt > targetbanner.txt
+       cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 3128: $alyx0 \n\n"
        ./cvelister.sh
@@ -96,7 +89,7 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
        exec 3<>/dev/tcp/$target/$hp
        echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
-       cut -c9-40 targethttp.txt > targetbanner.txt
+       cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp: $alyx0 \n\n"
        ./cvelister.sh
@@ -110,7 +103,7 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
        exec 3<>/dev/tcp/$target/$hp
        echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
-       cut -c9-40 targethttp.txt > targetbanner.txt
+       cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp: $alyx0 \n\n"
        ./cvelister.sh
