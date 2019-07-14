@@ -19,7 +19,7 @@ if [ $? -eq 0 ];then
   echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
   echo 80 >> httpport.txt
 fi
-for ((http=81;http<90;http++))
+for ((http=81;http<91;http++))
 do
    nc -z -w 1 $cam_ip $http &>/dev/null
    if [ $? -eq 0 ];then

@@ -16,7 +16,7 @@ if [ $? -eq 0 ];then
   echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
   echo 80 >> httpport.txt
 fi
-for ((http=81;http<90;http++))
+for ((http=81;http<91;http++))
 do
    nc -z -w 1 $target_ip $http &>/dev/null
    if [ $? -eq 0 ];then
@@ -37,7 +37,10 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
      do
         echo $air | grep "$aw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          fi
         fi
      done
    done
@@ -53,7 +56,10 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
      do
         echo $air | grep "$aw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          fi
         fi
      done
    done
@@ -68,7 +74,10 @@ N) echo -en "$red=>$default Proxy scanning deactivated...\n"
      do
         echo $air | grep "$aw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          fi
         fi
      done
    done
@@ -83,7 +92,10 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
      do
         echo $air | grep "$aw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+          fi
         fi
      done
    done

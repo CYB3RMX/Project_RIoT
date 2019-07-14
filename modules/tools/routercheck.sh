@@ -16,7 +16,7 @@ if [ $? -eq 0 ];then
   echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
   echo 80 >> httpport.txt
 fi
-for ((http=81;http<90;http++))
+for ((http=81;http<91;http++))
 do
    nc -z -w 1 $target_ip $http &>/dev/null
    if [ $? -eq 0 ];then
@@ -38,7 +38,10 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
      do
         echo $rout | grep -o "$rw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          fi
         fi
      done
    done
@@ -55,7 +58,10 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
      do
         echo $rout | grep -o "$rw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          fi
         fi
      done
    done
@@ -71,7 +77,10 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
      do
         echo $rout | grep -o "$rw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          fi
         fi
      done
    done
@@ -87,7 +96,10 @@ N) echo -en "$red=>$default Proxy scanning deactivated...\n"
      do
         echo $rout | grep -o "$rw" &>/dev/null
         if [ $? -eq 0 ];then
-          echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          echo "." &>/dev/null
+          if [ $? -eq 0 ];then
+            echo -en "$cyan>$green|${red}router$green|$cyan>$default Found word: $green$rw$default check -> http://$target_ip:$htt\n"
+          fi
         fi
      done
    done

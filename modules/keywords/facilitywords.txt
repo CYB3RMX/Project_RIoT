@@ -1,3 +1,14 @@
 DL8
 Remote
 Management
+PLC
+plc
+IC693CPU37X
+ACEmanager
+PMMS
+Telecontrol
+Schneider
+Electric
+PQube
+DrayTek
+Teltonika

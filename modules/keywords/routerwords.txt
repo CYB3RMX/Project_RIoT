@@ -15,3 +15,4 @@ ZYXEL
 P-660HN-T1A_IPv6
 Yönlendirici
 Lancom
+mikrotik
