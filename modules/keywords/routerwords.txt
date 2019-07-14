@@ -1,5 +1,9 @@
 Router
+router
+ROUTER
 TP-LINK
+tplink
+TPLINK
 Broadcom
 Broadband
 3Com
@@ -7,5 +11,7 @@ Huawei
 ZyXel
 EWR-301
 ZyXEL
+ZYXEL
 P-660HN-T1A_IPv6
 Yönlendirici
+Lancom

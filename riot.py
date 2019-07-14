@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems"]
 class start_RIoT():
    def completee(con, state):
       options=[i for i in commands if i.startswith(con)]
@@ -84,6 +84,9 @@ class start_RIoT():
          elif con == 'camera':
            os.system("cd modules/tools/; ./webcamdetect.sh")
            start_RIoT.console()
+         elif con == 'facility_systems':
+           os.system("cd modules/tools/; ./facility_sys.sh")
+           start_RIoT.console()
          elif con == 'exit':
            print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
            os.system("cd modules/tools/; rm -rf *.txt")
@@ -97,6 +100,7 @@ class start_RIoT():
       except KeyboardInterrupt or EOFError:
          print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
          os.system("cd modules/tools/; rm -rf *.txt")
+# EXECUTION AREA...
 os.system("cd modules/tools/; python3 dependencies.py")
 os.system("cd modules/tools/; ./banners.sh")
 try:

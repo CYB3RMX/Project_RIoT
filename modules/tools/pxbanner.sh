@@ -16,19 +16,19 @@ do
    nc -z -w 1 $target $px &>/dev/null
    if [ $? -eq 0 ];then
      if [ $px -eq 21 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 21: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 21(ftp/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 22 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 22: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 22(ssh/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 23 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23(telnet/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 25 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 25(smtp/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 80 ];then
@@ -37,11 +37,11 @@ do
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx=`cut -c9-40 targethttp.txt`
-       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 80: $alyx \n\n"
+       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 80(http/tcp): $alyx \n\n"
        ./cvelister.sh
        rm -rf targethttp.txt
      elif [ $px -eq 137 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 137: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 137(netbios/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 443 ];then
@@ -50,20 +50,20 @@ do
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
-       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 443: $alyx0 \n\n"
+       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 443(https/tcp): $alyx0 \n\n"
        ./cvelister.sh
        rm -rf targethttp.txt
      elif [ $px -eq 445 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 445: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 445(smb/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 2002 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2002: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2002(telnet/ftp): "
        python3 bannergrabber.py $target $px
        ./bannerfilter.sh
        ./cvelister.sh
      elif [ $px -eq 2121 ];then
-       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2121: "
+       echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 2121(ftp/tcp): "
        python3 bannergrabber.py $target $px
        ./cvelister.sh
      elif [ $px -eq 3128 ];then
@@ -72,7 +72,7 @@ do
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
-       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 3128: $alyx0 \n\n"
+       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 3128(http/tcp): $alyx0 \n\n"
        ./cvelister.sh
        rm -rf targethttp.txt
      fi
@@ -91,7 +91,7 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
-       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp: $alyx0 \n\n"
+       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp(http/tcp): $alyx0 \n\n"
        ./cvelister.sh
        rm -rf targethttp.txt
    done ;;
@@ -105,7 +105,7 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
-       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp: $alyx0 \n\n"
+       echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp(http/tcp): $alyx0 \n\n"
        ./cvelister.sh
        rm -rf targethttp.txt
    done ;;
