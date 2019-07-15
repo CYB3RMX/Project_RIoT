@@ -55,13 +55,27 @@ targetip=`cat temp.txt`
        elif [ $port -eq 554 ];then
          echo -en "\n$cyan[$red+$cyan]$default RTSP (554/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}554$green|$cyan>$default This target probably some kind of camera or connected a camera.\n\n"
+       elif [ $port -eq 789 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Redlion-crimson3 (789/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}789$green|$cyan>$default This target is probably an ICS be careful.\n"
        elif [ $port -eq 1911 ];then
          echo -en "\n$cyan[$red+$cyan]$default Fox (1911/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}1911$green|$cyan>$default This target probably an ICS be careful.\n\n"
+       elif [ $port -eq 1962 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Pcworx (1962/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}1962$green|$cyan>$default This target is probably an ICS be careful.\n"
        elif [ $port -eq 2002 ];then
          echo -en "\n$cyan[$red+$cyan]$default TELNET proxy (2002/tcp) [${green}open$default]\n"
        elif [ $port -eq 2121 ];then
          echo -en "\n$cyan[$red+$cyan]$default FTP proxy (2121/tcp) [${green}open$default]\n"
+       elif [ $port -eq 2332 ];then
+         echo -en "\n$cyan[$red+$cyan]$default TELNET proxy (2332/tcp) [${green}open$default]\n"
+       elif [ $port -eq 2404 ];then
+         echo -en "\n$cyan[$red+$cyan]$default iec-104 (2404/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}2404$green|$cyan>$default This target is probably an ICS be careful.\n"
+       elif [ $port -eq 2455 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Codesys (2455/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}2455$green|$cyan>$default This target is probably an ICS be careful.\n"
        elif [ $port -eq 3128 ];then
          echo $port >> httpport.txt
          echo -en "\n$cyan[$red+$cyan]$default HTTP proxy (3128/tcp) [${green}open$default]\n"
@@ -71,6 +85,9 @@ targetip=`cat temp.txt`
        elif [ $port -eq 4911 ];then
          echo -en "\n$cyan[$red+$cyan]$default Fox (4911/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}4911$green|$cyan>$default This target probably an ICS be careful.\n\n"
+       elif [ $port -eq 5007 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Melsec-q (5007/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}5007$green|$cyan>$default Target system maybe a MITSHUBISHI device.\n\n"
        elif [ $port -eq 5900 ];then
          for ((vnc=5900;vnc<5911;vnc++))
          do
@@ -79,6 +96,9 @@ targetip=`cat temp.txt`
        elif [ $port -eq 9100 ];then
          echo -en "\n$cyan[$red+$cyan]$default HP JetDirect (9100/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}9100$green|$cyan>$default This target probably a printer or connected with printer.\n\n"
+       elif [ $port -eq 9600 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Omron (9600/tcp) [${green}open$default]\n"
+         echo -en "$cyan=$green|${red}9600$green|$cyan>$default This target is probably an ICS be careful.\n"
        elif [ $port -eq 18245 ];then
          echo -en "\n$cyan[$red+$cyan]$default General Electric SRTP (18245/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}18245$green|$cyan>$default This target probably an ICS be careful.\n\n"
