@@ -76,6 +76,8 @@ targetip=`cat temp.txt`
        elif [ $port -eq 2455 ];then
          echo -en "\n$cyan[$red+$cyan]$default Codesys (2455/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}2455$green|$cyan>$default This target is probably an ICS be careful.\n"
+       elif [ $port -eq 3306 ];then
+         echo -en "\n$cyan[$red+$cyan]$default MySQL (3306/tcp) [${green}open$default]\n"
        elif [ $port -eq 3128 ];then
          echo $port >> httpport.txt
          echo -en "\n$cyan[$red+$cyan]$default HTTP proxy (3128/tcp) [${green}open$default]\n"
@@ -88,11 +90,15 @@ targetip=`cat temp.txt`
        elif [ $port -eq 5007 ];then
          echo -en "\n$cyan[$red+$cyan]$default Melsec-q (5007/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}5007$green|$cyan>$default Target system maybe a MITSHUBISHI device.\n\n"
+       elif [ $port -eq 5432 ];then
+         echo -en "\n$cyan[$red+$cyan]$default PostgreSQL (5432/tcp) [${green}open$default]\n"
        elif [ $port -eq 5900 ];then
          for ((vnc=5900;vnc<5911;vnc++))
          do
             echo -en "\n$cyan[$red+$cyan]$default VNC ($vnc/tcp) [${green}open$default]\n"
          done
+       elif [ $port -eq 8087 ];then
+         echo -en "\n$cyan[$red+$cyan]$default Riak (8087/tcp) [${green}open$default]\n"
        elif [ $port -eq 9100 ];then
          echo -en "\n$cyan[$red+$cyan]$default HP JetDirect (9100/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}9100$green|$cyan>$default This target probably a printer or connected with printer.\n\n"
@@ -105,6 +111,8 @@ targetip=`cat temp.txt`
        elif [ $port -eq 20000 ];then
          echo -en "\n$cyan[$red+$cyan]$default dnp3 (20000/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}20000$green|$cyan>$default This target probably an ICS be careful.\n\n"
+       elif [ $port -eq 27017 ];then
+         echo -en "\n$cyan[$red+$cyan]$default MongoDB (27017/tcp) [${green}open$default]\n"
        elif [ $port -eq 44818 ];then
          echo -en "\n$cyan[$red+$cyan]$default Ethernetip (44818/tcp) [${green}open$default]\n"
          echo -en "$cyan=$green|${red}44818$green|$cyan>$default This target probably an ICS be careful.\n\n"

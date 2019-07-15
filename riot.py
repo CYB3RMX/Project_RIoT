@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help"]
 class start_RIoT():
    def completee(con, state):
       options=[i for i in commands if i.startswith(con)]
@@ -39,6 +39,7 @@ class start_RIoT():
       print("air_sys: Scan target with air system detection script.")
       print("get_cve: Get available CVE for target's service names.")
       print("facility_systems: Scan target with facility system detection script.")
+      print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
       print("exit: Exit the program.")
       print("help: Print this output :).")
       print("--------------------------------------")
@@ -94,6 +95,9 @@ class start_RIoT():
            sys.exit(0)
          elif con == 'get_cve':
            os.system("cd modules/tools/; ./pxbanner.sh")
+           start_RIoT.console()
+         elif con == 'whatis':
+           os.system("cd modules/tools/; ./what_is.sh")
            start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use >help< command".format(lc1,lr1,lc1,w1))
