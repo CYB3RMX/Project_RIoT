@@ -16,7 +16,20 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits"]
+creds='''
+    ■■■■■■■■■■■■■■■■
+             ■■■■■         Thank you for using RIoT Project (^-^) <3
+           ■■■■
+       ■■■■                        Developer: CYB3RMX_ | cyb3rmx0@gmail.com
+         ■■■■■■■■
+            ■■■            Thanks for => Shodan and https://github.com/cve-search
+     ■     ■■■
+      ■  ■■                Please give me a feedback to improve RIoT Project.
+       ■■
+     ■■  ■
+   ■■     ■
+'''
 class start_RIoT():
    def completee(con, state):
       options=[i for i in commands if i.startswith(con)]
@@ -40,6 +53,7 @@ class start_RIoT():
       print("get_cve: Get available CVE for target's service names.")
       print("facility_systems: Scan target with facility system detection script.")
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
+      print("credits: Credits.")
       print("exit: Exit the program.")
       print("help: Print this output :).")
       print("--------------------------------------")
@@ -88,6 +102,9 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'facility_systems':
            os.system("cd modules/tools/; ./facility_sys.sh")
+           start_RIoT.console()
+         elif con == 'credits':
+           print(creds)
            start_RIoT.console()
          elif con == 'exit':
            print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
