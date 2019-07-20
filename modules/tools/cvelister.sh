@@ -10,7 +10,7 @@ green='\e[92m'
 if [ -e banners.txt ];then
   query=`cat banners.txt`
   echo -en $cyan"+++++++++++++++++++++++++++++++++++++++++++++ \n"
-  echo -en $red "Available CVE's For: $query \n"
+  echo -en $red "Available CVE information for: $query \n"
   echo -en $cyan"+++++++++++++++++++++++++++++++++++++++++++++ \n\n"$green
   python3 search.py $query | grep -o "CVE-[0-9]*-[0-9]*" >> cvee.txt
 
@@ -28,5 +28,5 @@ if [ -e banners.txt ];then
   rm -rf cvee.txt
   rm -rf banners.txt
 else
-  echo -en $cyan"["$red"!"$cyan"]"$default" Can't get banner information :( \n"
+  echo -en $cyan"["$red"!"$cyan"]"$default" Sorry, couldn't get banner information :( \n"
 fi

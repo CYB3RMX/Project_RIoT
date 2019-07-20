@@ -46,7 +46,7 @@ do
        ./cvelister.sh
      elif [ $px -eq 443 ];then
        exec 3<>/dev/tcp/$target/$px
-       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
+       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: Closed\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
@@ -68,7 +68,7 @@ do
        ./cvelister.sh
      elif [ $px -eq 3128 ];then
        exec 3<>/dev/tcp/$target/$px
-       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
+       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: Closed\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
@@ -78,16 +78,16 @@ do
      fi
    fi
 done
-echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
+echo -en "$red=>$default Do you want to check proxy ports (it will take a while.)[Y/N]?: "
 read choice
 case $choice in
-Y) echo -en "$yellow=>$default Starting proxy detection script \n"
+Y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
    ./proxyportcheck.sh
    httarr=(`cat httpport.txt`)
    for hp in ${httarr[*]}
    do
        exec 3<>/dev/tcp/$target/$hp
-       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
+       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: Closed\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
@@ -95,13 +95,13 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
        python2 cveparser.py $alyx0
        rm -rf targethttp.txt
    done ;;
-y) echo -en "$yellow=>$default Starting proxy detection script \n"
+y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
    ./proxyportcheck.sh
    httarr=(`cat httpport.txt`)
    for hp in ${httarr[*]}
    do
        exec 3<>/dev/tcp/$target/$hp
-       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: close\r\n\r\n" >&3
+       echo -e "GET / HTTP/1.1\r\nhost: $target\r\nConnection: Closed\r\n\r\n" >&3
        cat <&3 | grep -o "Server: [a-zA-Z0-9]*/[0-9]*.[0-9]*.*" > targethttp.txt
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
@@ -109,5 +109,5 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
        python2 cveparser.py $alyx0
        rm -rf targethttp.txt
    done ;;
-*) echo -en "$red=>$default Scanning ended \n" ;;
+*) echo -en "$red=>$default Scanning terminated...\n" ;;
 esac

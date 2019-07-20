@@ -12,25 +12,25 @@ cam_ip=`cat temp.txt`
 httarr=(`cat httpport.txt`)
 camwords=(`cd ..; cd keywords; cat camerawords.txt`)
 
-echo -en "$yellow=>$default Starting camera detection script against $cyan$cam_ip \n"
-echo -en "$yellow=>$default Checking http ports...\n"
+echo -en "$yellow=>$default Executing Camera Detection Script against the $cyan$cam_ip \n"
+echo -en "$yellow=>$default Checking the HTTP ports...\n"
 nc -z -w 1 $cam_ip 80 &>/dev/null
 if [ $? -eq 0 ];then
-  echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
+  echo -en "$cyan[$red+$cyan]$default Found a port: ${cyan}80 \n"
   echo 80 >> httpport.txt
 fi
 for ((http=81;http<91;http++))
 do
    nc -z -w 1 $cam_ip $http &>/dev/null
    if [ $? -eq 0 ];then
-     echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}$http \n"
+     echo -en "$cyan[$red+$cyan]$default Found a port: ${cyan}$http \n"
      echo $http >> httpport.txt
    fi
 done
-echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
+echo -en "$red=>$default Do you want to check proxy ports (it will take a while.)[Y/N]?: "
 read choices
 case $choices in
-Y) echo -en "$yellow=>$default Starting proxy detection script \n"
+Y) echo -en "$yellow=>$default Executing Proxy Detection Script \n"
    ./proxyportcheck.sh
    httarr=(`cat httpport.txt`)
    camwords=(`cd ..; cd keywords; cat camerawords.txt`)
@@ -47,13 +47,13 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
          if [ $? -eq 0 ];then
            echo "401" &>/dev/null
            if [ $? -eq 0 ];then
-             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Returned 401 check -> http://$cam_ip:$lo \n"
+             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Check has returned Code 401 -> http://$cam_ip:$lo \n"
            fi
          fi
       done
    done
    rm -rf httpport.txt ;;
-y) echo -en "$yellow=>$default Starting proxy detection script \n"
+y) echo -en "$yellow=>$default Executing Proxy Detection Script \n"
    ./proxyportcheck.sh
    httarr=(`cat httpport.txt`)
    camwords=(`cd ..; cd keywords; cat camerawords.txt`)
@@ -70,13 +70,13 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
          if [ $? -eq 0 ];then
            echo "401" &>/dev/null
            if [ $? -eq 0 ];then
-             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Returned 401 check -> http://$cam_ip:$lo \n"
+             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Check has returned Code 401 -> http://$cam_ip:$lo \n"
            fi
          fi
       done
    done
    rm -rf httpport.txt ;;
-N) echo -en "$red=>$default Proxy scanning deactivated...\n"
+N) echo -en "$red=>$default Proxy scanning terminated...\n"
    httarr=(`cat httpport.txt`)
    camwords=(`cd ..; cd keywords; cat camerawords.txt`)
    for lo in ${httarr[*]}
@@ -92,13 +92,13 @@ N) echo -en "$red=>$default Proxy scanning deactivated...\n"
          if [ $? -eq 0 ];then
            echo "401" &>/dev/null
            if [ $? -eq 0 ];then
-             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Returned 401 check -> http://$cam_ip:$lo $default\n"
+             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Check has returned Code 401 -> http://$cam_ip:$lo $default\n"
            fi
          fi
       done
    done
    rm -rf httpport.txt ;;
-n) echo -en "$red=>$default Proxy scanning deactivated...\n"
+n) echo -en "$red=>$default Proxy scanning terminated...\n"
    httarr=(`cat httpport.txt`)
    camwords=(`cd ..; cd keywords; cat camerawords.txt`)
    for lo in ${httarr[*]}
@@ -114,7 +114,7 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
          if [ $? -eq 0 ];then
            echo "401" &>/dev/null
            if [ $? -eq 0 ];then
-             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Returned 401 check -> http://$cam_ip:$lo \n"
+             echo -en "$cyan>$green|${red}camera$green|$cyan>$default Check has returned Code 401 -> http://$cam_ip:$lo \n"
            fi
          fi
       done

@@ -46,15 +46,15 @@ class start_RIoT():
       print("port_lookup: Port scan against the target.")
       print("clear: Clears the screen.")
       print("check_proxy: Scan target's proxy ports.")
-      print("router: Scan target with router detection script.")
-      print("camera: Scan target with camera detection script.")
-      print("printer: Scan target with printer detection script.")
-      print("air_sys: Scan target with air system detection script.")
-      print("get_cve: Get available CVE for target's service names.")
-      print("facility_systems: Scan target with facility system detection script.")
+      print("router: Scan target with Router Detection Script.")
+      print("camera: Scan target with Camera Detection Script.")
+      print("printer: Scan target with Printer Detection Script.")
+      print("air_sys: Scan target with Air System Detection Script.")
+      print("get_cve: Get available CVE list for target's service names.")
+      print("facility_systems: Scan target with Facility System Detection Script.")
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
-      print("credits: Credits.")
-      print("exit: Exit the program.")
+      print("credits: Credits for the project RIoT.")
+      print("exit: Terminate the program.")
       print("help: Print this output :).")
       print("--------------------------------------")
    def locator():
@@ -107,7 +107,7 @@ class start_RIoT():
            print(creds)
            start_RIoT.console()
          elif con == 'exit':
-           print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
+           print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
            os.system("cd modules/tools/; rm -rf *.txt")
            sys.exit(0)
          elif con == 'get_cve':
@@ -117,10 +117,10 @@ class start_RIoT():
            os.system("cd modules/tools/; ./what_is.sh")
            start_RIoT.console()
          else:
-           print("\n{}[{}!{}]{} Please use >help< command".format(lc1,lr1,lc1,w1))
+           print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
            start_RIoT.console()
       except KeyboardInterrupt or EOFError:
-         print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
+         print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
          os.system("cd modules/tools/; rm -rf *.txt")
 # EXECUTION AREA...
 os.system("cd modules/tools/; python3 dependencies.py")
@@ -131,5 +131,5 @@ try:
    os.system(gett)
    start_RIoT.console()
 except KeyboardInterrupt or EOFError:
-   print("\n{}[{}!{}]{} Program stopped...".format(lc1,lr1,lc1,w1))
+   print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
    os.system("cd modules/tools/; rm -rf *.txt")

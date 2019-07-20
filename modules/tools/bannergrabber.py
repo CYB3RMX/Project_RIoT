@@ -17,5 +17,5 @@ try:
    newfile.close()
    print(data)
 except UnicodeDecodeError:
-   print("Can't get banner information...")
+   print("Couldn't get banner information...")
 sock.close()

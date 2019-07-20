@@ -9,8 +9,8 @@ default='\e[0m'
 yellow='\e[93m'
 
 target_ip=`cat temp.txt`
-echo -en "$yellow=>$default Starting AIR system detection script against $cyan$targetip \n"
-echo -en "$yellow=>$default Checking http ports...\n"
+echo -en "$yellow=>$default Executing AIR System Detection Script against $cyan$targetip \n"
+echo -en "$yellow=>$default Checking HTTP ports...\n"
 nc -z -w 1 $target_ip 80 &>/dev/null
 if [ $? -eq 0 ];then
   echo -en "$cyan[$red+$cyan]$default Found port: ${cyan}80 \n"
@@ -24,10 +24,10 @@ do
      echo $http >> httpport.txt
    fi
 done
-echo -en "$red=>$default If you want to check proxy ports(it takes a while.)[Y/N]?: "
+echo -en "$red=>$default Do you want to check proxy ports (it will take a while.)[Y/N]?: "
 read sel
 case $sel in
-Y) echo -en "$yellow=>$default Starting proxy detection script \n"
+Y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
    ./proxyportcheck.sh
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
@@ -39,14 +39,14 @@ Y) echo -en "$yellow=>$default Starting proxy detection script \n"
         if [ $? -eq 0 ];then
           echo "." &>/dev/null
           if [ $? -eq 0 ];then
-            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default Check -> http://$target_ip:$target_port\n"
           fi
         fi
      done
    done
 
    rm -rf httpport.txt ;;
-y) echo -en "$yellow=>$default Starting proxy detection script \n"
+y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
    ./proxyportcheck.sh
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
@@ -58,14 +58,14 @@ y) echo -en "$yellow=>$default Starting proxy detection script \n"
         if [ $? -eq 0 ];then
           echo "." &>/dev/null
           if [ $? -eq 0 ];then
-            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default Check -> http://$target_ip:$target_port\n"
           fi
         fi
      done
    done
 
    rm -rf httpport.txt ;;
-N) echo -en "$red=>$default Proxy scanning deactivated...\n"
+N) echo -en "$red=>$default Proxy scanning terminated...\n"
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
    for htt in ${httparr[*]}
@@ -76,14 +76,14 @@ N) echo -en "$red=>$default Proxy scanning deactivated...\n"
         if [ $? -eq 0 ];then
           echo "." &>/dev/null
           if [ $? -eq 0 ];then
-            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default Check -> http://$target_ip:$target_port\n"
           fi
         fi
      done
    done
 
    rm -rf httpport.txt ;;
-n) echo -en "$red=>$default Proxy scanning deactivated...\n"
+n) echo -en "$red=>$default Proxy scanning terminated...\n"
    httparr=(`cat httpport.txt`)
    airwords=(`cd ..; cd keywords; cat airsystems.txt`)
    for htt in ${httparr[*]}
@@ -94,7 +94,7 @@ n) echo -en "$red=>$default Proxy scanning deactivated...\n"
         if [ $? -eq 0 ];then
           echo "." &>/dev/null
           if [ $? -eq 0 ];then
-            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default check -> http://$target_ip:$target_port\n"
+            echo -en "$cyan>$green|${red}AIR_sys$green|$cyan>$default Found word: $green$aw$default Check -> http://$target_ip:$target_port\n"
           fi
         fi
      done

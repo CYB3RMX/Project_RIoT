@@ -8,4 +8,4 @@ try:
    output=str(cve.search(query))
    print(output)
 except IndexError:
-   print("=> Can't get banner information :(")
+   print("=> Couldn't get Banner Information :(")
