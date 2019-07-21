@@ -22,7 +22,7 @@ do
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 22(ssh/tcp): "
        python3 bannergrabber.py $target $px
        gett=`cat banners.txt`
-       python2 cveparser.py $gett
+       python2 cveparser.py "$gett"
      elif [ $px -eq 23 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 23(telnet/tcp): "
        python3 bannergrabber.py $target $px
@@ -38,7 +38,7 @@ do
        cut -c9-40 targethttp.txt > banners.txt
        alyx=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 80(http/tcp): $alyx \n\n"
-       python2 cveparser.py $alyx
+       python2 cveparser.py "$alyx"
        rm -rf targethttp.txt
      elif [ $px -eq 137 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 137(netbios/tcp): "
@@ -51,7 +51,7 @@ do
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 443(https/tcp): $alyx0 \n\n"
-       python2 cveparser.py $alyx0
+       python2 cveparser.py "$alyx0"
        rm -rf targethttp.txt
      elif [ $px -eq 445 ];then
        echo -en $cyan"["$red"+"$cyan"]"$default"Banner info for port 445(smb/tcp): "
@@ -73,7 +73,7 @@ do
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port 3128(http/tcp): $alyx0 \n\n"
-       python2 cveparser.py $alyx0
+       python2 cveparser.py "$alyx0"
        rm -rf targethttp.txt
      fi
    fi
@@ -92,7 +92,7 @@ Y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp(http/tcp): $alyx0 \n\n"
-       python2 cveparser.py $alyx0
+       python2 cveparser.py "$alyx0"
        rm -rf targethttp.txt
    done ;;
 y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
@@ -106,7 +106,7 @@ y) echo -en "$yellow=>$default Executing Proxy Detection Script...\n"
        cut -c9-40 targethttp.txt > banners.txt
        alyx0=`cut -c9-40 targethttp.txt`
        echo -en $cyan"["$red"+"$cyan"]"$default"Server info for port $hp(http/tcp): $alyx0 \n\n"
-       python2 cveparser.py $alyx0
+       python2 cveparser.py "$alyx0"
        rm -rf targethttp.txt
    done ;;
 *) echo -en "$red=>$default Scanning terminated...\n" ;;

@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
@@ -53,6 +53,8 @@ class start_RIoT():
       print("get_cve: Get available CVE list for target's service names.")
       print("facility_systems: Scan target with Facility System Detection Script.")
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
+      print("webtech: Check target's web technologies.")
+      print("osGuess: Check target's operating system.")
       print("credits: Credits for the project RIoT.")
       print("exit: Terminate the program.")
       print("help: Print this output :).")
@@ -115,6 +117,12 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'whatis':
            os.system("cd modules/tools/; ./what_is.sh")
+           start_RIoT.console()
+         elif con == 'webtech':
+           os.system("cd modules/tools/; ./webtechs.sh")
+           start_RIoT.console()
+         elif con == 'osGuess':
+           os.system("cd modules/tools/; ./OsGuess.sh")
            start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
