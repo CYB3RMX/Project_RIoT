@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
@@ -55,14 +55,13 @@ class start_RIoT():
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
       print("webtech: Check target's web technologies.")
       print("osGuess: Check target's operating system.")
+      print("set_target: Set a target.")
       print("credits: Credits for the project RIoT.")
       print("exit: Terminate the program.")
       print("help: Print this output :).")
       print("--------------------------------------")
    def locator():
-      loc="curl -sSL http://ip-api.com/{}".format(targett)
-      print("{}=========={}LOCATION_INFO{}=========={}".format(lc1,lg1,lc1,w1))
-      os.system(loc)
+      os.system("cd modules/tools/; ./location.sh")
    def portscanner():
       os.system("cd modules/tools/; ./target_recon.sh")
    def cvescann():
@@ -71,7 +70,7 @@ class start_RIoT():
       start_RIoT.console()
    def console():
       try:
-         con=str(input("[RIoT]> "))
+         con=str(input("\u001b[0m[RIoT]> "))
          if con == 'help':
            start_RIoT.helpp()
            start_RIoT.console()
@@ -124,6 +123,9 @@ class start_RIoT():
          elif con == 'osGuess':
            os.system("cd modules/tools/; ./OsGuess.sh")
            start_RIoT.console()
+         elif con == 'set_target':
+           os.system("cd modules/tools/; ./settarget.sh")
+           start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
            start_RIoT.console()
@@ -134,9 +136,6 @@ class start_RIoT():
 os.system("cd modules/tools/; python3 dependencies.py")
 os.system("cd modules/tools/; ./banners.sh")
 try:
-   targett=str(input("\n{}[{}+{}]{} Enter a target: ".format(lc1,lr1,lc1,w1)))
-   gett="cd modules/tools/; echo {} > temp.txt".format(targett)
-   os.system(gett)
    start_RIoT.console()
 except KeyboardInterrupt or EOFError:
    print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
