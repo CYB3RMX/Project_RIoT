@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "shodan_exploits"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
@@ -51,6 +51,7 @@ class start_RIoT():
       print("printer: Scan target with Printer Detection Script.")
       print("air_sys: Scan target with Air System Detection Script.")
       print("get_cve: Get available CVE list for target's service names.")
+      print("shodan_exploits: Get available exploits from Shodan for target machine.")
       print("facility_systems: Scan target with Facility System Detection Script.")
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
       print("webtech: Check target's web technologies.")
@@ -125,6 +126,9 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'set_target':
            os.system("cd modules/tools/; ./settarget.sh")
+           start_RIoT.console()
+         elif con == 'shodan_exploits':
+           os.system("cd modules/tools/; ./ShodanExploits.sh")
            start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
