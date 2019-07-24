@@ -12,7 +12,7 @@ bold_text = "\033[1m"
 normal_text = "\033[0m"
 
 def downloaddb():
-	print("[+] Downloading cve_db.xml. This may take a few minutes.")
+	print("\033[93m=>\033[0m Downloading cve_db.xml. This may take a few minutes.")
 	with open(local_cve_db, 'wb') as file:
 		response = get('https://cve.mitre.org/data/downloads/allitems.xml')
 		file.write(response.content)
@@ -20,7 +20,7 @@ def downloaddb():
 		file.close()
 
 def cvenumber_search(cvenumber):
-	print("[+] Searching for \'{0}\', this may take a minute...".format(cvenumber))
+	print("\033[93m=>\033[0m Searching for \'{0}\', this may take several minutes please be patient...".format(cvenumber))
 	obj = untangle.parse(local_cve_db)
 
 	o = untangle.parse(local_cve_db)
@@ -30,18 +30,18 @@ def cvenumber_search(cvenumber):
 		reference = item.refs
 
 		if cvenumber in name.lower():
-			print(bold_text + "\n[+] Match found:\n----------------")
-			print(bold_text + "[+] CVE ID: " + normal_text + "{0}".format(name))
-			print(bold_text + "[+] CVE Description: " + normal_text + "{0}".format(desc))
+			print(bold_text + "\n\033[96m[\033[91m+\033[96m]\033[0m Match found:\n----------------")
+			print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m CVE ID: " + normal_text + "{0}".format(name))
+			print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m CVE Description: " + normal_text + "{0}".format(desc))
 			try:
 				for url in reference.ref:
-					print(bold_text + "[+] Reference: " + normal_text + "{0}".format(url.cdata))
+					print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m Reference: " + normal_text + "{0}".format(url.cdata))
 			except:
-				print("[-] No references available for {0}".format(name))
+				print("\033[96m[\033[91m-\033[96m]\033[0m No references available for {0}".format(name))
 
 
 def keyword_search(searchtext):
-	print("[+] Searching for \'{0}\', this may take a minute...".format(searchtext))
+	print("\033[93m=>\033[0m Searching for \'{0}\', this may take several minutes please be patient...".format(searchtext))
 	obj = untangle.parse(local_cve_db)
 
 	o = untangle.parse(local_cve_db)
@@ -51,14 +51,14 @@ def keyword_search(searchtext):
 		reference = item.refs
 
 		if searchtext in desc.lower():
-			print(bold_text + "\n[+] Match found:\n----------------")
-			print(bold_text + "[+] CVE ID: " + normal_text + "{0}".format(name))
-			print(bold_text + "[+] CVE Description: " + normal_text + "{0}".format(desc))
+			print(bold_text + "\n\033[96m[\033[91m+\033[96m]\033[0m Match found:\n----------------")
+			print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m CVE ID: " + normal_text + "{0}".format(name))
+			print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m CVE Description: " + normal_text + "{0}".format(desc))
 			try:
 				for url in reference.ref:
-					print(bold_text + "[+] Reference: " + normal_text + "{0}".format(url.cdata))
+					print(bold_text + "\033[96m[\033[91m+\033[96m]\033[0m Reference: " + normal_text + "{0}".format(url.cdata))
 			except:
-				print(bold_text + "[-] No references available for " + normal_text + "{0}".format(name))
+				print(bold_text + "\033[96m[\033[91m-\033[96m]\033[0m No references available for " + normal_text + "{0}".format(name))
 
 
 progdesc = "cvesearch allows for offline searching of CVEs."
