@@ -12,9 +12,6 @@ port=int(sys.argv[2])
 sock.connect((host,port))
 try:
    data=str(sock.recv(1024).decode("ascii"))
-   newfile=open("banners.txt","w")
-   newfile.write(data)
-   newfile.close()
    print(data)
 except UnicodeDecodeError:
    print("Couldn't get banner information...")

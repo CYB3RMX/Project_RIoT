@@ -16,14 +16,14 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_cve", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "shodan_exploits"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
            ■■■■
        ■■■■                        Developer: CYB3RMX_ | cyb3rmx0@gmail.com
          ■■■■■■■■
-            ■■■            Thanks for => Shodan and https://github.com/cve-search
+            ■■■            Thanks for => Shodan and https://github.com/highmeh
      ■     ■■■
       ■  ■■                Please give me a feedback to improve RIoT Project.
        ■■
@@ -50,8 +50,8 @@ class start_RIoT():
       print("camera: Scan target with Camera Detection Script.")
       print("printer: Scan target with Printer Detection Script.")
       print("air_sys: Scan target with Air System Detection Script.")
-      print("get_cve: Get available CVE list for target's service names.")
-      print("shodan_exploits: Get available exploits from Shodan for target machine.")
+      print("get_banners: Get target's service names.")
+      print("cve_search: Search CVE or exploit.")
       print("facility_systems: Scan target with Facility System Detection Script.")
       print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
       print("webtech: Check target's web technologies.")
@@ -61,14 +61,6 @@ class start_RIoT():
       print("exit: Terminate the program.")
       print("help: Print this output :).")
       print("--------------------------------------")
-   def locator():
-      os.system("cd modules/tools/; ./location.sh")
-   def portscanner():
-      os.system("cd modules/tools/; ./target_recon.sh")
-   def cvescann():
-      os.system("cd modules/tools/; ./bannerfilter.sh")
-      os.system("cd modules/tools/; ./cvelister.sh")
-      start_RIoT.console()
    def console():
       try:
          con=str(input("\u001b[0m[RIoT]> "))
@@ -76,13 +68,10 @@ class start_RIoT():
            start_RIoT.helpp()
            start_RIoT.console()
          elif con == 'get_location':
-           start_RIoT.locator()
+           os.system("cd modules/tools/; ./location.sh")
            start_RIoT.console()
          elif con == 'port_lookup':
-           start_RIoT.portscanner()
-           start_RIoT.console()
-         elif con == 'cvescan':
-           start_RIoT.cvescann()
+           os.system("cd modules/tools/; ./target_recon.sh")
            start_RIoT.console()
          elif con == 'clear':
            os.system("clear")
@@ -112,7 +101,10 @@ class start_RIoT():
            print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
            os.system("cd modules/tools/; rm -rf *.txt")
            sys.exit(0)
-         elif con == 'get_cve':
+         elif con == 'cve_search':
+           os.system("cd modules/tools/; ./lookfor.sh")
+           start_RIoT.console()
+         elif con == 'get_banners':
            os.system("cd modules/tools/; ./pxbanner.sh")
            start_RIoT.console()
          elif con == 'whatis':
@@ -126,9 +118,6 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'set_target':
            os.system("cd modules/tools/; ./settarget.sh")
-           start_RIoT.console()
-         elif con == 'shodan_exploits':
-           os.system("cd modules/tools/; ./ShodanExploits.sh")
            start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
