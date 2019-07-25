@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# Thank you for this module highmeh
 import argparse
 import os.path
 import untangle
@@ -10,14 +9,6 @@ from requests import get
 local_cve_db = "cve_db.xml"
 bold_text = "\033[1m"
 normal_text = "\033[0m"
-
-def downloaddb():
-	print("\033[93m=>\033[0m Downloading cve_db.xml. This may take a few minutes.")
-	with open(local_cve_db, 'wb') as file:
-		response = get('https://cve.mitre.org/data/downloads/allitems.xml')
-		file.write(response.content)
-		print("[+] Complete!")
-		file.close()
 
 def cvenumber_search(cvenumber):
 	print("\033[93m=>\033[0m Searching for \'{0}\', this may take several minutes please be patient...".format(cvenumber))
