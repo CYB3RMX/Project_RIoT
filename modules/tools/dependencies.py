@@ -9,3 +9,7 @@ try:
    import untangle
 except ImportError:
    os.system("pip3 install untangle")
+try:
+   import tqdm
+except ImportError:
+   os.system("pip3 install tqdm")
