@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search", "updatedb"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
@@ -41,26 +41,29 @@ class start_RIoT():
    readline.set_completer(completee)
    def helpp():
       print("Usage: python3 riot.py \n")
-      print("------------COMMANDS_LIST-------------")
-      print("get_location: Get target's location informations.")
-      print("port_lookup: Port scan against the target.")
-      print("clear: Clears the screen.")
-      print("check_proxy: Scan target's proxy ports.")
-      print("router: Scan target with Router Detection Script.")
-      print("camera: Scan target with Camera Detection Script.")
-      print("printer: Scan target with Printer Detection Script.")
-      print("air_sys: Scan target with Air System Detection Script.")
-      print("get_banners: Get target's service names.")
-      print("cve_search: Search CVE or exploit.")
-      print("facility_systems: Scan target with Facility System Detection Script.")
-      print("whatis: Check device type (e.g. honeypot,cloud,database,...).")
-      print("webtech: Check target's web technologies.")
-      print("osGuess: Check target's operating system.")
-      print("set_target: Set a target.")
-      print("credits: Credits for the project RIoT.")
-      print("exit: Terminate the program.")
-      print("help: Print this output :).")
-      print("--------------------------------------")
+      print("--------------------------------COMMANDS_LIST---------------------------------")
+      print("|Commands        | Descriptions                                              |")
+      print("------------------------------------------------------------------------------")
+      print("|air_sys         | Scan target with Air System Detection Script.             |")
+      print("|camera          | Scan target with Camera Detection Script.                 |")
+      print("|check_proxy     | Scan target\'s proxy ports.                                |")
+      print("|clear           | Clears the screen.                                        |")
+      print("|credits         | Credits for the project RIoT.                             |")
+      print("|cve_search      | Search CVE or exploit.                                    |")
+      print("|exit            | Terminate the program.                                    |")
+      print("|facility_systems| Scan target with Facility System Detection Script.        |")
+      print("|get_banners     | Get target\'s service names.                               |")
+      print("|get_location    | Get target\'s location informations.                       |")
+      print("|help            | Print this output :).                                     |")
+      print("|osGuess         | Check target\'s operating system.                          |")
+      print("|port_lookup     | Port scan against the target.                             |")
+      print("|printer         | Scan target with Printer Detection Script.                |")
+      print("|router          | Scan target with Router Detection Script.                 |")
+      print("|set_target      | Set a target.                                             |")
+      print("|updatedb        | Update RIoT\'s CVE and exploit database.                   |")
+      print("|webtech         | Check target\'s web technologies.                          |")
+      print("|whatis          | Check device type (e.g. honeypot,cloud,database,...).     |")
+      print("------------------------------------------------------------------------------")
    def console():
       try:
          con=str(input("\u001b[0m[RIoT]> "))
@@ -118,6 +121,9 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'set_target':
            os.system("cd modules/tools/; ./settarget.sh")
+           start_RIoT.console()
+         elif con == 'updatedb':
+           os.system("cd modules/tools/; ./updatedb.py")
            start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))

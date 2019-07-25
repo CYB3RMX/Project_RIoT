@@ -8,7 +8,8 @@ yellow='\e[93m'
 default='\e[0m'
 green='\e[92m'
 
-targetip=`cat temp.txt`
+if [ -e temp.txt ];then
+  targetip=`cat temp.txt`
   portzz=(`cd ..; cd keywords; cat portnumbers.txt`)
   echo -en $cyan"=========="$green"PORT INFORMATION"$cyan"=========="$default
   for port in ${portzz[*]}
@@ -122,3 +123,6 @@ targetip=`cat temp.txt`
        fi
      fi
   done
+else
+  echo -en "$cyan[${red}x$cyan]$default No target were specified.\n"
+fi

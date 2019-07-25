@@ -13,5 +13,5 @@ if [ -e temp.txt ];then
   echo -en "$cyan==========${green}LOCATION INFORMATION$cyan==========$default \n"
   curl -sSL http://ip-api.com/$target
 else
-  echo -en "$cyan[${red}x$cyan]$default Not any target specified yet.\n"
+  echo -en "$cyan[${red}x$cyan]$default Not any target were specified yet.\n"
 fi
