@@ -7,8 +7,8 @@ import math
 
 local_cve_db = "cve_db.xml"
 url = "https://cve.mitre.org/data/downloads/allitems.xml"
-print("\033[96m[\033[91m+\033[96m]\033[0m Removing old database.")
-os.system("rm -rf cve_db.xml")
+print("\033[96m[\033[91m+\033[96m]\033[0m Removing old database if it is already exist.")
+os.system("if [ -e cve_db.xml ];then rm -rf cve_db.xml; fi")
 # Streaming, so we can iterate over the response.
 r = requests.get(url, stream=True)
 
