@@ -66,7 +66,7 @@ class start_RIoT():
       print("------------------------------------------------------------------------------")
    def console():
       try:
-         con=str(input("\u001b[0m[RIoT]> "))
+         con=str(input("\u001b[0m|RIoT|+> "))
          if con == 'help':
            start_RIoT.helpp()
            start_RIoT.console()
@@ -128,7 +128,7 @@ class start_RIoT():
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
            start_RIoT.console()
-      except KeyboardInterrupt or EOFError:
+      except:
          print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
          os.system("cd modules/tools/; rm -rf *.txt")
 # EXECUTION AREA...
@@ -136,6 +136,6 @@ os.system("cd modules/tools/; python3 dependencies.py")
 os.system("cd modules/tools/; ./banners.sh")
 try:
    start_RIoT.console()
-except KeyboardInterrupt or EOFError:
+except:
    print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
    os.system("cd modules/tools/; rm -rf *.txt")
