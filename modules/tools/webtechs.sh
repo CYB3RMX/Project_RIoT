@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Detecting what web technologies used..
+# Detecting what web technologies are used..
 
 cyan='\e[96m'
 red='\e[91m'

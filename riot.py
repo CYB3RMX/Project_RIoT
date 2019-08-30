@@ -16,7 +16,7 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search", "updatedb"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search", "updatedb", "mac_vlookup"]
 creds='''
     ■■■■■■■■■■■■■■■■
              ■■■■■         Thank you for using RIoT Project (^-^) <3
@@ -55,6 +55,7 @@ class start_RIoT():
       print("|get_banners     | Get target\'s service names.                               |")
       print("|get_location    | Get target\'s location informations.                       |")
       print("|help            | Print this output :).                                     |")
+      print("|mac_vlookup     | Get target\'s mac vendor.                                  |")
       print("|osGuess         | Check target\'s operating system.                          |")
       print("|port_lookup     | Port scan against the target.                             |")
       print("|printer         | Scan target with Printer Detection Script.                |")
@@ -121,6 +122,9 @@ class start_RIoT():
            start_RIoT.console()
          elif con == 'set_target':
            os.system("cd modules/tools/; ./settarget.sh")
+           start_RIoT.console()
+         elif con == 'mac_vlookup':
+           os.system("cd modules/tools/; ./macvendorlookup.sh")
            start_RIoT.console()
          elif con == 'updatedb':
            os.system("cd modules/tools/; ./updatedb.py")
