@@ -8,7 +8,7 @@ green='\e[92m'
 default='\e[0m'
 yellow='\e[93m'
 
-cd ..;cd apikeys/;cat largerio.txt &>/dev/null
+cd apikeys/;cat largerio.txt &>/dev/null
 if [ $? -eq 0 ];then
   api_key=`cd ..;cd apikeys/;cat largerio.txt`
   echo -en "$cyan[$red+$cyan]$default Enter target: "
