@@ -16,18 +16,18 @@ w1='\u001b[0m'
 defbl='\u001b[49m'
 
 import os,sys,readline,rlcompleter
-commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search", "updatedb", "mac_vlookup"]
+commands=["get_location", "port_lookup", "clear", "check_proxy", "router", "camera", "printer", "air_sys", "get_banners", "exit", "facility_systems", "whatis", "help", "credits", "webtech", "osGuess", "set_target", "cve_search", "updatedb", "mac_vlookup", "add_key", "api_scan"]
 creds='''
-    ■■■■■■■■■■■■■■■■
-             ■■■■■         Thank you for using RIoT Project (^-^) <3
-           ■■■■
-       ■■■■                        Developer: CYB3RMX_ | cyb3rmx0@gmail.com
-         ■■■■■■■■
-            ■■■            Thanks for => Shodan and https://github.com/highmeh
-     ■     ■■■
-      ■  ■■                Please give me a feedback to improve RIoT Project.
-       ■■
-     ■■  ■
+    ■■■■■■■■■■■■■■■■                                                                 +---------------------------------------------+
+             ■■■■■         Thank you for using RIoT Project (^-^) <3                 | Legal disclaimer: Usage of RIoT for         |
+           ■■■■                                                                      | scanning targets without prior mutual       |
+       ■■■■                        Developer: CYB3RMX_ | cyb3rmx0@gmail.com          | consent is illegal. It is the end user's    |
+         ■■■■■■■■                                                                    | responsibility to obey all applicable local |
+            ■■■      Thanks_for=["Shodan", "Zoomeye",                                | state and federal laws. Developers assume   |
+     ■     ■■■                   "Larger.io",                                        | no liability and are not responsible for    |
+      ■  ■■                      "https://github.com/highmeh"]                       | any misuse or damage caused by this tool.   |
+       ■■                                                                            +---------------------------------------------+
+     ■■  ■                     Please give me a feedback to improve RIoT Project.
    ■■     ■
 '''
 class start_RIoT():
@@ -44,7 +44,9 @@ class start_RIoT():
       print("--------------------------------COMMANDS_LIST---------------------------------")
       print("|Commands        | Descriptions                                              |")
       print("------------------------------------------------------------------------------")
+      print("|add_key         | Add an API key to modules.                                |")
       print("|air_sys         | Scan target with Air System Detection Script.             |")
+      print("|api_scan        | Get more information about target using various API\'s.    |")
       print("|camera          | Scan target with Camera Detection Script.                 |")
       print("|check_proxy     | Scan target\'s proxy ports.                                |")
       print("|clear           | Clears the screen.                                        |")
@@ -129,6 +131,12 @@ class start_RIoT():
          elif con == 'updatedb':
            os.system("cd modules/tools/; ./updatedb.py")
            start_RIoT.console()
+         elif con == 'add_key':
+           os.system("cd modules/tools/; ./add_key.sh")
+           start_RIoT.console()
+         elif con == 'api_scan':
+           os.system("cd modules/tools/; ./api_scan.py")
+           start_RIoT.console()
          else:
            print("\n{}[{}!{}]{} Please use > help < command".format(lc1,lr1,lc1,w1))
            start_RIoT.console()
@@ -136,7 +144,7 @@ class start_RIoT():
          print("\n{}[{}!{}]{} Program terminated...".format(lc1,lr1,lc1,w1))
          os.system("cd modules/tools/; rm -rf *.txt")
 # EXECUTION AREA...
-os.system("cd modules/tools/; python3 dependencies.py")
+os.system("cd modules/tools/; python dependencies.py")
 os.system("cd modules/tools/; ./banners.sh")
 try:
    start_RIoT.console()
